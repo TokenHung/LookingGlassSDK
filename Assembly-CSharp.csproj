@@ -116,9 +116,46 @@
      <Compile Include="Assets\Holoplay\Scripts\ProWorkstationManager.cs" />
      <Compile Include="Assets\Holoplay\Scripts\Quilt.cs" />
      <Compile Include="Assets\Holoplay\Scripts\SimpleDOF.cs" />
+     <Compile Include="Assets\MainMenu.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\StdLib.hlsl" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Debug\Waveform.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\MultiScaleVOUpsample.compute" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\Distortion.hlsl" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\ExposureHistogram.hlsl" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\Texture3DLerp.compute" />
@@ -131,11 +168,16 @@
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Debug\Vectorscope.compute" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Sampling.hlsl" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\CopyStdFromTexArray.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\Lut3DBaker.compute" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Debug\Waveform.compute" />
      <None Include="Assets\Holoplay\Resources\ReadDepthPixel.shader" />
+     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\API\PSSL.hlsl" />
+     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Debug\LightMeter.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\AutoExposure.compute" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\MultiScaleVORender.compute" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\Texture2DLerp.shader" />
@@ -145,6 +187,7 @@
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\MultiScaleVODownsample2.compute" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\ScalableAO.hlsl" />
      <None Include="Assets\Holoplay\Examples\! README !.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\Holoplay\README.txt" />
      <None Include="Assets\Holoplay\Resources\DOF\Pass Depth.shader" />
      <None Include="Assets\Holoplay\Resources\DOF\Box Blur.shader" />
@@ -157,13 +200,21 @@
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\ACES.hlsl" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\FinalPass.shader" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Debug\Histogram.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Debug\Histogram.compute" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\API\Switch.hlsl" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\API\Metal.hlsl" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\Uber.shader" />
+     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\xRLib.hlsl" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\CopyStdFromDoubleWide.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Debug\Overlays.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\API\PSP2.hlsl" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\ScreenSpaceReflections.shader" />
      <None Include="Assets\Holoplay\Extras\OBEY Game Assets\OBEY info.txt" />
@@ -171,6 +222,7 @@
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\DiscardAlpha.shader" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\API\OpenGL.hlsl" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\Lut2DBaker.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\CopyStd.shader" />
      <None Include="Assets\Holoplay\Resources\ViewInterpolation.compute" />
      <None Include="Assets\Holoplay\Resources\Lightfield.shader" />
@@ -178,16 +230,23 @@
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\MultiScaleVODownsample1.compute" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\Fog.hlsl" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\ExposureHistogram.compute" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\GrainBaker.shader" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\GaussianDownsample.compute" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\ScreenSpaceReflections.hlsl" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\API\XboxOne.hlsl" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\Copy.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\API\D3D12.hlsl" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\DepthOfField.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Builtins\SubpixelMorphologicalAntialiasing.hlsl" />
+     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\API\Vulkan.hlsl" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Colors.hlsl" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
+     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -726,31 +785,31 @@
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
