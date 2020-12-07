@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{7234d8e2-9896-081c-4edb-37fff40c3ffd}</ProjectGuid>
+    <ProjectGuid>{8585b028-5334-f2ec-d6c5-2e22fbe75e9e}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -272,8 +272,11 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.UWP.Extensions">
+        <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.7f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.7f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -630,42 +633,42 @@
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>C:/vscode/LookingGlassQuilt/LookingGlassQuilt/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{8b44bd51-e676-84df-27cb-7ab40fc4f82e}</Project>
+      <Project>{8ea448c0-b4eb-1ba4-f9ae-357cb540945e}</Project>
       <Name>Assembly-CSharp</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

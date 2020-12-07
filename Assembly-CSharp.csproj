@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{8b44bd51-e676-84df-27cb-7ab40fc4f82e}</ProjectGuid>
+    <ProjectGuid>{8ea448c0-b4eb-1ba4-f9ae-357cb540945e}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -36,6 +36,8 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\AgeInput.cs" />
+     <Compile Include="Assets\GenderInput.cs" />
      <Compile Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Runtime\Attributes\DisplayNameAttribute.cs" />
      <Compile Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Runtime\Attributes\MaxAttribute.cs" />
      <Compile Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
@@ -116,6 +118,7 @@
      <Compile Include="Assets\Holoplay\Scripts\ProWorkstationManager.cs" />
      <Compile Include="Assets\Holoplay\Scripts\Quilt.cs" />
      <Compile Include="Assets\Holoplay\Scripts\SimpleDOF.cs" />
+     <Compile Include="Assets\LogTracker.cs" />
      <Compile Include="Assets\MainMenu.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
@@ -151,6 +154,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+     <Compile Include="Assets\Warning.cs" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\StdLib.hlsl" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Debug\Waveform.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -785,31 +789,31 @@
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>C:/vscode/LookingGlassQuilt/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+        <HintPath>C:/vscode/LookingGlassSDK/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
