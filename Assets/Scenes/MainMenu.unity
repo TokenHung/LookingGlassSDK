@@ -1038,7 +1038,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 200}
+  m_AnchoredPosition: {x: 0, y: -250}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &904628151
@@ -1152,6 +1152,7 @@ MonoBehaviour:
   Play_Button: {fileID: 1512543513}
   Input_Field_Age: {fileID: 2102372357}
   Input_Field_Gender: {fileID: 950854671}
+  WarningMessage: {fileID: 904628151}
   My_Log: {fileID: 2030932719}
 --- !u!1 &950854669
 GameObject:
@@ -2097,6 +2098,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1832136603}
         m_MethodName: PlayGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2030932721}
+        m_MethodName: IsPlaying
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

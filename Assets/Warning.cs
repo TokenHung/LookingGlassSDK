@@ -10,6 +10,7 @@ public class Warning : MonoBehaviour
     public Button Play_Button;
     public TMP_InputField Input_Field_Age;
     public TMP_InputField Input_Field_Gender;
+    public TextMeshProUGUI WarningMessage;
     public GameObject My_Log;
     private LogTracker LogTracker_Script;
     private string[] Log = {"",""};
@@ -27,8 +28,8 @@ public class Warning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Valid_Input && Gender != "" && Age != "")
-        {
+        if (Gender != "" && Age != "")
+        {   
             bool valid_Age = int.TryParse(Age, out int result);
             if (valid_Age)
             {
@@ -37,6 +38,7 @@ public class Warning : MonoBehaviour
                     if (Gender == Valid_Gender_String[i])
                     {
                         Valid_Input = true;
+                        WarningMessage.text = "Gender: " + Gender.ToUpper() + "\n" + "Age: " + Age;
                         break;
                     }
                 }
@@ -52,11 +54,12 @@ public class Warning : MonoBehaviour
         if (Valid_Input)
         {
             Play_Button.gameObject.SetActive(true);
-            LogTracker.Gender = Gender;
+            LogTracker.Gender = Gender.ToUpper();
             LogTracker.Age = Age;
         }
         else
         {
+            WarningMessage.text = "Gender: " + Gender.ToUpper() + "\n" + "Age: " + Age;
             Play_Button.gameObject.SetActive(false);
         }
     }

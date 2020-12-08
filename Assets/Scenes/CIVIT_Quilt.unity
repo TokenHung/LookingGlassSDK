@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45036227, g: 0.50038135, b: 0.5752709, a: 1}
+  m_IndirectSpecularColor: {r: 0.4503622, g: 0.50038147, b: 0.5752711, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -946,6 +946,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1651665018}
   - component: {fileID: 1651665019}
+  - component: {fileID: 1651665020}
   m_Layer: 0
   m_Name: DEMO
   m_TagString: Untagged
@@ -982,3 +983,15 @@ MonoBehaviour:
   holoplay: {fileID: 54631509}
   quiltToOverrideWith: {fileID: 2800000, guid: 66aadb46f031cb1458bfc566424bdded, type: 3}
   whatToShow: 1
+--- !u!114 &1651665020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651665017}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afc366bfa106b2549bc5829aba116383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

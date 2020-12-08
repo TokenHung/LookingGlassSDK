@@ -101,7 +101,7 @@
      <Compile Include="Assets\Holoplay\Examples\Scripts\DemoMoveText.cs" />
      <Compile Include="Assets\Holoplay\Examples\Scripts\DemoMultiplexSwitcher.cs" />
      <Compile Include="Assets\Holoplay\Examples\Scripts\DemoProWorkstationIPC.cs" />
-     <Compile Include="Assets\Holoplay\Examples\Scripts\DemoQuiltToggle.cs" />
+     <Compile Include="Assets\Holoplay\Examples\Scripts\DemoQuilt.cs" />
      <Compile Include="Assets\Holoplay\Extras\OBEY Game Assets\lightFlicker.cs" />
      <Compile Include="Assets\Holoplay\Scripts\ButtonManager.cs" />
      <Compile Include="Assets\Holoplay\Scripts\CalibrationManager.cs" />
@@ -120,6 +120,7 @@
      <Compile Include="Assets\Holoplay\Scripts\SimpleDOF.cs" />
      <Compile Include="Assets\LogTracker.cs" />
      <Compile Include="Assets\MainMenu.cs" />
+     <Compile Include="Assets\QuiltBu.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
