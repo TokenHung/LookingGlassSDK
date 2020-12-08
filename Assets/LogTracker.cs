@@ -14,7 +14,7 @@ public class LogTracker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     void WriteQualityMatrix(string message)
@@ -30,7 +30,6 @@ public class LogTracker : MonoBehaviour
 			{
 				WriteQualityMatrix(f);
 			}
-            print(IsPlay);
     }
     public void IsPlaying()
     {
