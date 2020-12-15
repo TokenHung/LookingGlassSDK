@@ -8,9 +8,13 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace LookingGlass.Demos {
 	public class DemoQuilt : MonoBehaviour {
+		public GameObject Log_Tracker;
+		private LogTracker LogTracker;
 		public GameObject UIStart;
 		public GameObject UIEnd;
-		private bool CanMove = false;
+		public GameObject User_Study_Finish;
+		public GameObject Unfinished_Set;
+		private bool ESC_flag = false; // check if ESC press twice in the same pic
 		public LookingGlass.Holoplay holoplay;
 		public Texture2D quiltToOverrideWith;
 		public enum WhatToShow { SceneOnly, QuiltOnly, SceneOnQuilt};
@@ -18,7 +22,7 @@ namespace LookingGlass.Demos {
 		private WhatToShow lastFrame;
 		//private string imagePathToy = "Toy/";
 		//private string imagePathCastle = "Castle/";
-		private string[] imagePathNow = {"Toys/", "Castle/", "Dragon/", "Flower'/", "Holiday", "Seal and Balls"};
+		private string[] imagePathNow = {"Toys/", "Castle/", "Dragon/", "Flowers/", "Holiday/", "Seal and Balls/"};
 		int imageIndex = 0;
 		Texture2D[] textureType;
 		Object[] textures;
@@ -26,7 +30,14 @@ namespace LookingGlass.Demos {
 		//float timer = 0f;
 		private int PathIndex;
 
+		[Header("Set Control")]
+		private bool CanMove = false;
+		int set_number_count = 0;
+		int last_number = 0;
+		int ESC_Count = 0;
+
 		void Start() {
+			LogTracker = Log_Tracker.GetComponent<LogTracker>();
 			for (PathIndex = 0; PathIndex < 6; PathIndex++)
 			{
 				textures = Resources.LoadAll(imagePathNow[PathIndex], typeof(Texture2D));
@@ -42,34 +53,68 @@ namespace LookingGlass.Demos {
 			holoplay.overrideQuilt = quiltToOverrideWith;
 			holoplay.renderOverrideBehind = true;
 			holoplay.background = new Color(0, 0, 1, 1);
+			
+		}
+
+		public void Skip_Remaining_Image()
+		{
+			LogTracker.unfinished_flag = true;
+			NextSet();
 		}
 		public void NextSet()
 		{
+			ESC_Count = 0;
 			PathIndex += 1;
+			imageIndex = 0;
+			last_number = 0;
+			set_number_count = 0;
 			KeyNext();
 			CanMove = true;
 		}
 
 		void KeyNext()
 		{
+			//ESC_Count = 0;
 			var files = Directory.GetFiles("Assets/Resources/" + imagePathNow[PathIndex] , "Tile_generate__" + imageIndex.ToString() + "__" + "*.jpg" );
 			result = Path.GetFileName(files[0]);
 			result = result.Substring(0, result.Length - 4);
-			print(result.Substring(0, result.Length - 6));
+			//print(result.Length);
+			//print(result.Substring(0, result.Length - 6));
 			quiltToOverrideWith = (Texture2D)Resources.Load<Texture2D>( imagePathNow[PathIndex] + result);
 			holoplay.overrideQuilt = quiltToOverrideWith;	
 		}
 		public void Restart()
 		{
+			LogTracker.Quality_Matrix_csv_string = "";
+			LogTracker.matrix_index = 0;
+			ESC_Count = 0;
 			imageIndex = 0;
+			last_number = 0;
+			set_number_count = 0;
 			KeyNext();
 			CanMove = true;
 		}
 		void Update () {
+			if(ESC_Count == 5)
+			{
+				while(true)
+				{
+					CanMove = false;
+					if (PathIndex == 5)
+					{
+						User_Study_Finish.gameObject.SetActive(true);
+						break;
+					}
+				UIStart.gameObject.SetActive(true);
+				//NextSet();
+				break;
+				}
+			}
 			if(CanMove)
 			{	
 				if (Input.GetKeyUp(KeyCode.RightArrow))
 				{
+					set_number_count += 1;
 					if (imageIndex < (textures.Length - 1))
 					{
 						imageIndex = imageIndex + 1;
@@ -79,20 +124,54 @@ namespace LookingGlass.Demos {
 						UIEnd.gameObject.SetActive(true);
 						CanMove = false;
 					}
-					print("Right");
+					Debug.Log("Right");
 				}
 				if (Input.GetKeyUp(KeyCode.LeftArrow))
-				{
-					if (imageIndex > 0)
+				{	
+					while(true)
 					{
-						imageIndex = imageIndex - 1;
+						if (set_number_count == 0)
+						{
+							Debug.Log("This is the first picture");
+							break;
+						}
+						else if (last_number == set_number_count)
+						{
+							Debug.Log("You reach last ESC");
+							break;
+						}
+						set_number_count -= 1;
+						if (imageIndex > 0)
+						{
+							imageIndex = imageIndex - 1;
+						}
+						Debug.Log("Left");
+						break;
 					}
-					print("Left");
-				}
+				}			
 
 				if (Input.GetKeyUp(KeyCode.Escape))
 				{
-					Debug.Log(result);
+					while(true)
+					{
+						if (set_number_count == 0)
+						{
+							Debug.Log("This is the first picture");
+							break;
+						}
+						if(last_number == set_number_count)
+						{
+							Debug.Log("This is the last JND you perceive");
+							break;
+						}
+						ESC_Count++;
+						Debug.Log("You press ESC, you had press ( " + ESC_Count + " / 5");
+						last_number = set_number_count;
+						LogTracker.file_name_to_parse = result;
+						LogTracker.log_flag = true;
+					// Debug.Log(result);
+					break;
+					}
 				}
 
 				if (textureType != null  && textureType.Length > 0 && (Input.GetKeyUp(KeyCode.RightArrow) ||Input.GetKeyUp(KeyCode.LeftArrow)) )
