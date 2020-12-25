@@ -27,7 +27,6 @@ namespace LookingGlass.Demos {
 		Texture2D[] textureType;
 		Object[] textures;
 		string result ="";
-		//float timer = 0f;
 		private int PathIndex;
 
 		[Header("Set Control")]

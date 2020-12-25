@@ -36,8 +36,6 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\AgeInput.cs" />
-     <Compile Include="Assets\GenderInput.cs" />
      <Compile Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Runtime\Attributes\DisplayNameAttribute.cs" />
      <Compile Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Runtime\Attributes\MaxAttribute.cs" />
      <Compile Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
@@ -118,9 +116,13 @@
      <Compile Include="Assets\Holoplay\Scripts\ProWorkstationManager.cs" />
      <Compile Include="Assets\Holoplay\Scripts\Quilt.cs" />
      <Compile Include="Assets\Holoplay\Scripts\SimpleDOF.cs" />
-     <Compile Include="Assets\LogTracker.cs" />
-     <Compile Include="Assets\MainMenu.cs" />
-     <Compile Include="Assets\QuiltBu.cs" />
+     <Compile Include="Assets\Scripts\AgeInput.cs" />
+     <Compile Include="Assets\Scripts\GenderInput.cs" />
+     <Compile Include="Assets\Scripts\LogTracker.cs" />
+     <Compile Include="Assets\Scripts\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\QuiltBu.cs" />
+     <Compile Include="Assets\Scripts\UserStudyDuration.cs" />
+     <Compile Include="Assets\Scripts\Warning.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -155,7 +157,6 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-     <Compile Include="Assets\Warning.cs" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\StdLib.hlsl" />
      <None Include="Assets\Holoplay Post-Processing 2.1.7\PostProcessing\Shaders\Debug\Waveform.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
