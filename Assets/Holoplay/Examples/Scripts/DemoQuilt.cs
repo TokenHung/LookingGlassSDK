@@ -20,14 +20,19 @@ namespace LookingGlass.Demos {
 		public enum WhatToShow { SceneOnly, QuiltOnly, SceneOnQuilt};
 		public WhatToShow whatToShow = WhatToShow.SceneOnly;
 		private WhatToShow lastFrame;
-		//private string imagePathToy = "Toy/";
-		//private string imagePathCastle = "Castle/";
-		private string[] imagePathNow = {"Toys/", "Castle/", "Dragon/", "Flowers/", "Holiday/", "Seal and Balls/"};
+		private string[] imagePathNow = {"elephant/", "Castle/", "Dragon/", "Flowers/", "Holiday/", "Seal and Balls/"};
+		// current: [quality,parallax]
+		private int[,] quality_matrix = new int[15, 2] {{70, 45}, {70, 23}, {70, 15}, {70, 12}, {70, 9}, {50, 45}, {50, 23}, {50, 15}, {50, 12}, {50, 9}, {30, 45}, {30, 23}, {30, 15}, {30, 12}, {30, 9}}; 
 		int imageIndex = 0;
+		int [] Quality_array = {70, 50, 30};
+		int [] Parallax_array = {45, 23, 15, 12, 9};
 		Texture2D[] textureType;
 		Object[] textures;
 		string result ="";
 		private int PathIndex;
+
+		int cur_quality = 90;
+		int cur_parallax = 45;
 
 		[Header("Set Control")]
 		private bool CanMove = false;
@@ -45,14 +50,13 @@ namespace LookingGlass.Demos {
 					textureType[i] = (Texture2D)textures[i];
 				}
 			}
-			PathIndex = -1;
+			PathIndex = 0;
 			holoplay.overrideQuilt = quiltToOverrideWith;
 			holoplay.renderOverrideBehind = true;
 			holoplay.background = new Color(0, 0, 1, 1);
 			holoplay.overrideQuilt = quiltToOverrideWith;
 			holoplay.renderOverrideBehind = true;
 			holoplay.background = new Color(0, 0, 1, 1);
-			
 		}
 
 		public void Skip_Remaining_Image()
@@ -67,14 +71,14 @@ namespace LookingGlass.Demos {
 			imageIndex = 0;
 			last_number = 0;
 			set_number_count = 0;
-			KeyNext();
+			//KeyNext();
 			CanMove = true;
 		}
 
-		void KeyNext()
+		void KeyNext_Flicker_quality()
 		{
 			//ESC_Count = 0;
-			var files = Directory.GetFiles("Assets/Resources/" + imagePathNow[PathIndex] , "Tile_generate__" + imageIndex.ToString() + "__" + "*.jpg" );
+			var files = Directory.GetFiles("Assets/Resources/" + imagePathNow[PathIndex] + "/" , "Tile_generate__" + imageIndex.ToString() + "__" + "*.jpg" );
 			result = Path.GetFileName(files[0]);
 			result = result.Substring(0, result.Length - 4);
 			//print(result.Length);
@@ -82,7 +86,30 @@ namespace LookingGlass.Demos {
 			quiltToOverrideWith = (Texture2D)Resources.Load<Texture2D>( imagePathNow[PathIndex] + result);
 			holoplay.overrideQuilt = quiltToOverrideWith;	
 		}
-		public void Restart()
+
+		void Next_Compare_quality()
+		{
+			float coin = Random.Range(0.0f, 1.0f);
+			if (coin > 0.5f)
+			{
+				StartCoroutine(Play_Spefic_Stimulus(90, 45, 0f));
+				StartCoroutine(ShowBlank(5.0f));
+				StartCoroutine(Play_Spefic_Stimulus(30, 45, 6.0f)); // Ref		
+			}
+			else
+			{	
+				StartCoroutine(Play_Spefic_Stimulus(30, 45, 0f)); // Ref
+				StartCoroutine(ShowBlank(5.0f));
+				StartCoroutine(Play_Spefic_Stimulus(90,45, 6.0f));
+			}
+		}
+
+		void Next_Compare_parallax()
+		{
+
+		}
+
+		/*public void Restart()
 		{
 			LogTracker.Quality_Matrix_csv_string = "";
 			LogTracker.matrix_index = 0;
@@ -92,8 +119,13 @@ namespace LookingGlass.Demos {
 			set_number_count = 0;
 			KeyNext();
 			CanMove = true;
-		}
+		}*/
 		void Update () {
+			if (Input.GetKeyUp("r")) // debugging
+			{
+				Next_Compare_quality();
+			}
+
 			if(ESC_Count == 5)
 			{
 				while(true)
@@ -149,6 +181,8 @@ namespace LookingGlass.Demos {
 					}
 				}			
 
+
+
 				if (Input.GetKeyUp(KeyCode.Escape))
 				{
 					while(true)
@@ -175,7 +209,7 @@ namespace LookingGlass.Demos {
 
 				if (textureType != null  && textureType.Length > 0 && (Input.GetKeyUp(KeyCode.RightArrow) ||Input.GetKeyUp(KeyCode.LeftArrow)) )
 				{
-					KeyNext();
+					//KeyNext();
 				}
 			}
 			if (whatToShow != lastFrame) {
@@ -194,7 +228,6 @@ namespace LookingGlass.Demos {
 				lastFrame = whatToShow;
 			}
 
-		
 			// frame player
 			/* timer += Time.deltaTime;
 			if (textureType != null  && textureType.Length > 0 && timer > 0.3f)
@@ -212,7 +245,24 @@ namespace LookingGlass.Demos {
 				print("now imageIndex" + imageIndex);
 				print(imagePath + "/Tile_generate__" + imageIndex.ToString() + ".png");
 			}*/
+		}
+		IEnumerator Play_Spefic_Stimulus(int Quality, int Parallax, float second)
+		{
+			yield return new WaitForSeconds (second);
+			var files = Directory.GetFiles("Assets/Resources/UCSD/" + imagePathNow[PathIndex], "Tile_generate__" + "*__" + Quality +  "__" + Parallax + "*.jpg" );
+			result = Path.GetFileName(files[0]);
+			result = result.Substring(0, result.Length - 4);
+			print(result);
+			// quiltToOverrideWith = (Texture2D)Resources.Load<Texture2D>("UCSD/" + imagePathNow[PathIndex + 1] + "Tile_generate__" + "*__" + cur_quality +  "__" + cur_parallax);
+			quiltToOverrideWith = (Texture2D)Resources.Load<Texture2D>("UCSD/" + imagePathNow[PathIndex] + result);
+			holoplay.overrideQuilt = quiltToOverrideWith;
+		}
 
+		IEnumerator ShowBlank(float second)
+		{
+			yield return new WaitForSeconds (second);	
+			quiltToOverrideWith = (Texture2D)Resources.Load<Texture2D>("black");
+			holoplay.overrideQuilt = quiltToOverrideWith;
 		}
 	}
 }

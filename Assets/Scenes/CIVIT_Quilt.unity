@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.4503622, g: 0.50038147, b: 0.5752711, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3982,7 +3982,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1439520035
 Transform:
   m_ObjectHideFlags: 0
@@ -4362,7 +4362,7 @@ MonoBehaviour:
   Unfinished_Set: {fileID: 1419546639}
   holoplay: {fileID: 54631509}
   quiltToOverrideWith: {fileID: 2800000, guid: c384b8a8aee805b4da44df3adeae4941, type: 3}
-  whatToShow: 1
+  whatToShow: 2
 --- !u!114 &1651665020
 MonoBehaviour:
   m_ObjectHideFlags: 0

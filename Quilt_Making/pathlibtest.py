@@ -13,7 +13,7 @@ tile_Height = 4096 // 9
 tile_Width = 4096 // 5
 
 Parallax_List = [45, 23, 15, 12, 9] # MAX_Parallax = 45
-JPG_Quality_List = [90, 60, 30]
+JPG_Quality_List = [95, 70, 45, 20]
 
 blank_image = np.zeros((Quilt_Height, Quilt_Width, 3), np.uint8)
 Raw_Png_Directory = pathlib.Path("./UCSD/")
@@ -21,7 +21,7 @@ Folder_List = [x for x in Raw_Png_Directory.iterdir() if x.is_dir()] # read sub_
 pattern = "*.png"
 
 def main():
-    
+    jpg_name_index = 0
     for Folder_Index in range(len(Folder_List)): # iteration through raw png folder, quality, and parallax
         png_input_list =  [png_raw for png_raw in Folder_List[Folder_Index].glob(pattern)]
         #current_Raw_Png_Directory = str(Raw_Png_Directory) + str(Folder_List[Folder_Index]) + "/"
@@ -34,8 +34,8 @@ def main():
                     print(str(feed_image_str))
                     canvas_paint(img, grid_index)
                 img = jpg_codec(blank_image, JPG_Quality_List[JPG_Quality_Index])
-                cv.imwrite("Quilt/" + str(Folder_List[Folder_Index]) + "/Tile_generate__" + str(JPG_Quality_List[JPG_Quality_Index]) + "__" + str(Parallax_List[Parallax_List_Index]) + ".jpg", img)
-
+                cv.imwrite("Quilt/" + str(Folder_List[Folder_Index]) + "/Tile_generate__" + str(jpg_name_index) + "__" + str(JPG_Quality_List[JPG_Quality_Index]) + "__" + str(Parallax_List[Parallax_List_Index]) + ".jpg", img)
+                jpg_name_index = jpg_name_index + 1
 def UCSD_DataSet_str_processing(input_img_num, parallax_per_pic, grid_index):
     index_for_feed_image = (grid_index + parallax_per_pic - 1) // parallax_per_pic
     sampling_interval = input_img_num // Parallax_List[0]
@@ -47,7 +47,7 @@ def canvas_paint(img, i):
         img = cv.resize(img ,(tile_Width, tile_Height))
     except Exception as e:
         print(str(e))
-    i = 46 - i # The UCSD DataSet sweep scene from right to left
+    i = i # The UCSD DataSet sweep scene from right to left
     j = 4 - (i - 1) % 5 if (i % 5 != 0) else 0 # Width Index
     k = i // 5 if (i % 5 != 0) else i // 5 -1 # Height Index
     blank_image[k * tile_Height : (k + 1) * tile_Height, j * tile_Width : (j + 1) * tile_Width] = img
