@@ -6,8 +6,17 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 namespace LookingGlass.Demos {
 	public class DemoQuilt : MonoBehaviour {
+		float [] Is_Answer_Correct = new float [3];
+		float coin = 0f;
+		int log_iterator = 0;
+		public float timer;
+		public float [] time_turn = new float [3];
+		public float time_start;
+		public GameObject User_Study_Mode_Canvas;
+		public TextMeshProUGUI User_Study_Mode_Text;
 		public GameObject Log_Tracker;
 		private LogTracker LogTracker;
 		public GameObject UIStart;
@@ -20,12 +29,15 @@ namespace LookingGlass.Demos {
 		public enum WhatToShow { SceneOnly, QuiltOnly, SceneOnQuilt};
 		public WhatToShow whatToShow = WhatToShow.SceneOnly;
 		private WhatToShow lastFrame;
-		private string[] imagePathNow = {"elephant/", "Castle/", "Dragon/", "Flowers/", "Holiday/", "Seal and Balls/"};
+		public GameObject Ask_Quality_Sequence_Button;
+		private string[] imagePathNow = {"elephant/", "pink_stuffed_animal/", "stuffed_gorilla/", "train/", "trees/"};
 		// current: [quality,parallax]
 		private int[,] quality_matrix = new int[15, 2] {{70, 45}, {70, 23}, {70, 15}, {70, 12}, {70, 9}, {50, 45}, {50, 23}, {50, 15}, {50, 12}, {50, 9}, {30, 45}, {30, 23}, {30, 15}, {30, 12}, {30, 9}}; 
 		int imageIndex = 0;
-		int [] Quality_array = {70, 50, 30};
-		int [] Parallax_array = {45, 23, 15, 12, 9};
+		int [] Quality_array = {95, 70, 45, 20};
+		int Quality_array_iterator = 0;
+		int [] Parallax_array = {45, 23, 15, 12}; // {45, 23, 15, 12, 9};
+		int Parallax_array_iterator = 0;
 		Texture2D[] textureType;
 		Object[] textures;
 		string result ="";
@@ -39,10 +51,12 @@ namespace LookingGlass.Demos {
 		int set_number_count = 0;
 		int last_number = 0;
 		int ESC_Count = 0;
-
+		Vector3 User_Study_Done = new Vector3(0, 0, 0); // quality; parallax; set
+		[Header("Set Control")]
+		public int User_Study_Mode = 0; // 0: init; 1: Simul 2. Flicker
 		void Start() {
 			LogTracker = Log_Tracker.GetComponent<LogTracker>();
-			for (PathIndex = 0; PathIndex < 6; PathIndex++)
+			for (PathIndex = 0; PathIndex < imagePathNow.Length; PathIndex++)
 			{
 				textures = Resources.LoadAll(imagePathNow[PathIndex], typeof(Texture2D));
 				textureType = new Texture2D[textures.Length];
@@ -89,24 +103,144 @@ namespace LookingGlass.Demos {
 
 		void Next_Compare_quality()
 		{
-			float coin = Random.Range(0.0f, 1.0f);
+			print(User_Study_Mode);
+			if (Quality_array_iterator == Quality_array.Length - 1)
+			{
+				Quality_array_iterator = 0;
+				User_Study_Done.x = 1;
+			}
+			if (User_Study_Done.x == 1)
+			{
+				
+				if (User_Study_Done.y != 1)
+				{
+					User_Study_Mode = 2;
+					User_Study_Mode_Text.text = "Parallax";
+					StartCoroutine(SetObjectActive_GameObject_After(User_Study_Mode_Canvas, 0));
+					return;
+					// Next_Compare_parallax();
+				}
+				else if (User_Study_Done.z == 0 && PathIndex != (imagePathNow.Length - 1))
+				{
+					PathIndex += 1;
+					Quality_array_iterator = 0;
+					Parallax_array_iterator = 0;
+					User_Study_Done.x = 0;
+					User_Study_Done.y = 0;
+					StartCoroutine(SetObjectActive_GameObject_After(User_Study_Mode_Canvas, 0));
+					return;
+					// Next set
+				}
+				else
+				{
+					User_Study_Done.z = 1;
+					StartCoroutine(SetObjectActive_GameObject_After(UIEnd.gameObject, 0));
+					return;
+					// Done
+				}
+			}
+
+			coin = Random.Range(0.0f, 1.0f);
+			float buffer_duration = 1.0f;
+			float scene_duration = 10.0f;
+			float accumulate = 0f;
 			if (coin > 0.5f)
 			{
-				StartCoroutine(Play_Spefic_Stimulus(90, 45, 0f));
-				StartCoroutine(ShowBlank(5.0f));
-				StartCoroutine(Play_Spefic_Stimulus(30, 45, 6.0f)); // Ref		
+				StartCoroutine(ShowBlank(accumulate));
+				accumulate += buffer_duration;
+				StartCoroutine(Play_Next_SequenceMode(accumulate));
+				accumulate += scene_duration;
+				StartCoroutine(ShowBlank(accumulate));
+				accumulate += buffer_duration;
+				StartCoroutine(Play_Ref_SequenceMode(accumulate)); // Ref
+				accumulate += scene_duration;
+				StartCoroutine(ShowBlank(accumulate));
 			}
 			else
 			{	
-				StartCoroutine(Play_Spefic_Stimulus(30, 45, 0f)); // Ref
-				StartCoroutine(ShowBlank(5.0f));
-				StartCoroutine(Play_Spefic_Stimulus(90,45, 6.0f));
+				StartCoroutine(ShowBlank(accumulate));
+				accumulate += buffer_duration;
+				StartCoroutine(Play_Ref_SequenceMode(accumulate)); // Ref	
+				accumulate += scene_duration;
+				StartCoroutine(ShowBlank(accumulate));
+				accumulate += buffer_duration;
+				StartCoroutine(Play_Next_SequenceMode(accumulate));
+				accumulate += scene_duration;
+				StartCoroutine(ShowBlank(accumulate));
 			}
+			accumulate += buffer_duration;
+			StartCoroutine(SetObjectActive_GameObject_After(Ask_Quality_Sequence_Button, accumulate));
+			time_start = timer + accumulate;//- accumulate;
 		}
 
 		void Next_Compare_parallax()
 		{
+			print(User_Study_Mode);
+			if (Parallax_array_iterator == Parallax_array.Length - 1)
+			{
+				Parallax_array_iterator = 0;
+				User_Study_Done.y = 1;
+			}
+			if (User_Study_Done.y == 1)
+			{
+				if (User_Study_Done.x != 1)
+				{
+					User_Study_Mode = 1;
+					User_Study_Mode_Text.text = "Quality";
+					StartCoroutine(SetObjectActive_GameObject_After(User_Study_Mode_Canvas, 0));
+					return;
+					// Next_Compare_quality();
+				}
+				else if (User_Study_Done.z == 0 && PathIndex != (imagePathNow.Length - 1))
+				{
+					PathIndex += 1;
+					Quality_array_iterator = 0;
+					Parallax_array_iterator = 0;
+					User_Study_Done.x = 0;
+					User_Study_Done.y = 0;
+					StartCoroutine(SetObjectActive_GameObject_After(User_Study_Mode_Canvas, 0));
+					return;
+					// Next set
+				}
+				else
+				{
+					User_Study_Done.z = 1;
+					StartCoroutine(SetObjectActive_GameObject_After(UIEnd.gameObject, 0));
+					return;
+				}
+			}
 
+			coin = Random.Range(0.0f, 1.0f);
+			float buffer_duration = 1.0f;
+			float scene_duration = 10.0f;
+			float accumulate = 0f;
+			if (coin > 0.5f)
+			{
+				StartCoroutine(ShowBlank(accumulate));
+				accumulate += buffer_duration;
+				StartCoroutine(Play_Next_SequenceMode(accumulate));
+				accumulate += scene_duration;
+				StartCoroutine(ShowBlank(accumulate));
+				accumulate += buffer_duration;
+				StartCoroutine(Play_Ref_SequenceMode(accumulate)); // Ref
+				accumulate += scene_duration;
+				StartCoroutine(ShowBlank(accumulate));
+			}
+			else
+			{	
+				StartCoroutine(ShowBlank(accumulate));
+				accumulate += buffer_duration;
+				StartCoroutine(Play_Ref_SequenceMode(accumulate)); // Ref	
+				accumulate += scene_duration;
+				StartCoroutine(ShowBlank(accumulate));
+				accumulate += buffer_duration;
+				StartCoroutine(Play_Next_SequenceMode(accumulate));
+				accumulate += scene_duration;
+				StartCoroutine(ShowBlank(accumulate));
+			}
+			accumulate += buffer_duration;
+			StartCoroutine(SetObjectActive_GameObject_After(Ask_Quality_Sequence_Button, accumulate));
+			time_start = timer + accumulate ;//- accumulate;
 		}
 
 		/*public void Restart()
@@ -227,9 +361,9 @@ namespace LookingGlass.Demos {
 				}
 				lastFrame = whatToShow;
 			}
-
+			timer += Time.deltaTime;
 			// frame player
-			/* timer += Time.deltaTime;
+			/* 
 			if (textureType != null  && textureType.Length > 0 && timer > 0.3f)
 			{
 				imageIndex++;
@@ -264,5 +398,174 @@ namespace LookingGlass.Demos {
 			quiltToOverrideWith = (Texture2D)Resources.Load<Texture2D>("black");
 			holoplay.overrideQuilt = quiltToOverrideWith;
 		}
+		IEnumerator Play_Next_SequenceMode(float second)
+		{
+			yield return new WaitForSeconds (second);
+			if (User_Study_Mode == 1)
+			{
+				Quality_array_iterator += 1;
+				print(Quality_array[Quality_array_iterator]);
+				//print(Parallax_array[0]);
+				var files = Directory.GetFiles("Assets/Resources/UCSD/" + imagePathNow[PathIndex], "Tile_generate__" + "*__" + Quality_array[Quality_array_iterator] +  "__" + Parallax_array[0] + "*.jpg" );
+				result = Path.GetFileName(files[0]);
+				result = result.Substring(0, result.Length - 4);
+				print(result);
+				// quiltToOverrideWith = (Texture2D)Resources.Load<Texture2D>("UCSD/" + imagePathNow[PathIndex + 1] + "Tile_generate__" + "*__" + cur_quality +  "__" + cur_parallax);
+				quiltToOverrideWith = (Texture2D)Resources.Load<Texture2D>("UCSD/" + imagePathNow[PathIndex] + result);
+				holoplay.overrideQuilt = quiltToOverrideWith;
+			}
+			else if (User_Study_Mode == 2)
+			{
+				Parallax_array_iterator += 1;
+				print(Parallax_array[Parallax_array_iterator]);
+				//print(Parallax_array[0]);
+				var files = Directory.GetFiles("Assets/Resources/UCSD/" + imagePathNow[PathIndex], "Tile_generate__" + "*__" + Quality_array[0] +  "__" + Parallax_array[Parallax_array_iterator] + "*.jpg" );
+				result = Path.GetFileName(files[0]);
+				result = result.Substring(0, result.Length - 4);
+				print(result);
+				// quiltToOverrideWith = (Texture2D)Resources.Load<Texture2D>("UCSD/" + imagePathNow[PathIndex + 1] + "Tile_generate__" + "*__" + cur_quality +  "__" + cur_parallax);
+				quiltToOverrideWith = (Texture2D)Resources.Load<Texture2D>("UCSD/" + imagePathNow[PathIndex] + result);
+				holoplay.overrideQuilt = quiltToOverrideWith;
+			}
+		}
+		IEnumerator Play_Next_Parallax(float second) // back up
+		{
+			yield return new WaitForSeconds (second);
+			Parallax_array_iterator += 1;
+			print(Parallax_array[Parallax_array_iterator]);
+			//print(Parallax_array[0]);
+			var files = Directory.GetFiles("Assets/Resources/UCSD/" + imagePathNow[PathIndex], "Tile_generate__" + "*__" + Quality_array[0] +  "__" + Parallax_array[Parallax_array_iterator] + "*.jpg" );
+			result = Path.GetFileName(files[0]);
+			result = result.Substring(0, result.Length - 4);
+			print(result);
+			// quiltToOverrideWith = (Texture2D)Resources.Load<Texture2D>("UCSD/" + imagePathNow[PathIndex + 1] + "Tile_generate__" + "*__" + cur_quality +  "__" + cur_parallax);
+			quiltToOverrideWith = (Texture2D)Resources.Load<Texture2D>("UCSD/" + imagePathNow[PathIndex] + result);
+			holoplay.overrideQuilt = quiltToOverrideWith;
+		}
+
+		IEnumerator Play_Ref_SequenceMode(float second)
+		{
+			print("playsource");
+			yield return new WaitForSeconds (second);
+			var files = Directory.GetFiles("Assets/Resources/UCSD/" + imagePathNow[PathIndex], "Tile_generate__" + "*__" + "95" +  "__" + "45" + "*.jpg" );
+			result = Path.GetFileName(files[0]);
+			result = result.Substring(0, result.Length - 4);
+			print(result);
+			// quiltToOverrideWith = (Texture2D)Resources.Load<Texture2D>("UCSD/" + imagePathNow[PathIndex + 1] + "Tile_generate__" + "*__" + cur_quality +  "__" + cur_parallax);
+			quiltToOverrideWith = (Texture2D)Resources.Load<Texture2D>("UCSD/" + imagePathNow[PathIndex] + result);
+			holoplay.overrideQuilt = quiltToOverrideWith;
+		}
+		IEnumerator SetObjectActive_GameObject_After(GameObject something, float second)
+		{
+			yield return new WaitForSeconds (second);
+			something.gameObject.SetActive(true);
+			// print("ff");
+		}
+
+		public void Continue_Current_Test()
+		{
+			if (User_Study_Mode == 1)
+			{
+				Next_Compare_quality();
+			}
+			else
+			{
+				Next_Compare_parallax();
+			}
+		}
+
+		public void Get_User_Study_Mode()
+		{
+			User_Study_Mode = LogTracker.User_Study_Mode;
+			StartCoroutine(Set_User_Study_String());
+		}
+
+		public void Go_Next_Study_Mode()
+		{
+			if(User_Study_Mode == 1)
+			{
+				Next_Compare_quality();
+			}
+			else
+			{
+				Next_Compare_parallax();
+			}
+		}
+
+		IEnumerator Set_User_Study_String()
+		{
+			yield return new WaitForSeconds (1.0f);
+			if (User_Study_Mode == 1)
+			{
+				User_Study_Mode_Text.text = "Quality";
+			}
+			else
+			{
+				User_Study_Mode_Text.text = "Parallax";
+			}
+		}
+
+		public void Is_Second_Correct()
+		{
+			time_turn[log_iterator] = timer - time_start;
+			if (coin > 0.5)
+			{
+				Is_Answer_Correct[log_iterator] = 1;
+			}
+			else
+			{
+				Is_Answer_Correct[log_iterator] = 0;
+			}
+
+			log_iterator += 1;
+			if ((Parallax_array_iterator == Parallax_array.Length -1) || (Quality_array_iterator == Quality_array.Length -1))
+			{
+				LogTracker.Quality_flag = User_Study_Mode;
+				LogTracker.log_flag = true;
+				string answer_to_parse = "";
+				for (int i = 0; i < 3; i++)
+				{
+					answer_to_parse = answer_to_parse + Is_Answer_Correct[i].ToString() + "," + time_turn[i].ToString();
+					if (i != 2)
+					{
+						answer_to_parse += ",";
+					}
+				}
+				LogTracker.string_to_parse = answer_to_parse;
+				log_iterator = 0;
+			}
+			
+		}
+		public void Is_First_Correct()
+		{
+			time_turn[log_iterator] = timer - time_start;
+			if (coin > 0.5)
+			{
+				Is_Answer_Correct[log_iterator] = 0;
+			}
+			else
+			{
+				Is_Answer_Correct[log_iterator] = 1;
+			}
+			
+			log_iterator += 1;
+			if ((Parallax_array_iterator == Parallax_array.Length -1) || (Quality_array_iterator == Quality_array.Length -1))
+			{
+				LogTracker.Quality_flag = User_Study_Mode;
+				LogTracker.log_flag = true;
+				string answer_to_parse = "";
+				for (int i = 0; i < 3; i++)
+				{
+					answer_to_parse = answer_to_parse + Is_Answer_Correct[i].ToString() + "," + time_turn[i].ToString();
+					if (i != 2)
+					{
+						answer_to_parse += ",";
+					}
+				}
+				LogTracker.string_to_parse = answer_to_parse;
+				log_iterator = 0;
+			}
+		}
+
 	}
 }
